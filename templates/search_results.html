@@ -1,0 +1,30 @@
+{% extends "base.html" %}
+
+{% block content %}
+<h2>Search Results</h2>
+
+{% if results %}
+<table class="table">
+    <thead>
+        <tr>
+            <th>Name</th>
+            <th>Genre</th>
+            <th>Rating</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for game in results %}
+        <tr>
+            <td>{{ game.name }}</td>
+            <td>{{ game.genre }}</td>
+            <td>{{ game.rating }}</td>
+            <td><a href="/update/{{ game.id }}">Update</a> | <a href="/delete/{{ game.id }}">Delete</a></td> 
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+{% else %}
+<p>No games found.</p>
+{% endif %}
+{% endblock %}
